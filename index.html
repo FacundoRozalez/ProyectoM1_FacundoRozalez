@@ -10,26 +10,25 @@
     <header>
         <div id="TituloHead">
             <h1>Colorfly Studio</h1>
-            <h2>Branding visual para empresas y proyectos</h2>
+            <p>Branding visual para empresas y proyectos</p>
         </div>
     </header>
     <main>
         <section>
+            <h2>Genera tus Paletas de Colores</h2>
             <p id="texto"> La paleta de colores se utiliza para organizar y combinar tonos de manera armónica, garantizando coherencia visual, contraste y legibilidad. Su uso facilita la comunicación visual y la identidad del diseño, y puede ser aplicada por diseñadores, desarrolladores, artistas y cualquier persona que busque crear interfaces, piezas gráficas o proyectos visuales equilibrados y funcionales.</p>
             <div id="generar-paleta">
-                <label id=texto-label for="cantidad-paleta">Selecciona la cantida de colores que quieres generar</label>
-                <br>
                 <select id="cantidad-paleta">
-                    <option value="0">Seleccionar Cantidad</option>
+                    <option value="" selected disabled>Seleccionar Cantidad</option>
                     <option value="6">6 Colores</option>
                     <option value="8">8 Colores</option>
                     <option value="9">9 Colores</option>
-                </div>
-            </select>
+                </select>
+            </div>
             
+            <div class="paleta-generada" style="display:none; width: 90vw; height: 300px; border: 1px solid #000; margin: 1rem auto"></div>
+
             
-            <div class="paleta-generada"></div>
-                
         </section>
     </main>
     <footer>

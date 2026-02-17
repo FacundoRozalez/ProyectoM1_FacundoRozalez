@@ -40,11 +40,20 @@ main {
     align-items:start;
     text-align: center;
     flex: 1; 
+    margin-bottom: 1.5rem;
+
+}
+
+h2{
+    font-size: 2rem;
+    margin-top: 3rem;
 }
 
 #texto {
-    font-size: 1.5rem;
-    margin-top: 1rem;
+    margin: 2rem 10rem;
+    font-size: 1.3rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 2.5rem;
 }
 
 #generar-paleta{
@@ -54,6 +63,24 @@ main {
 #texto-label{
     font-size: 2rem;
 }
+
+select{
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 1rem 1rem;
+    color: #000;
+
+    background: linear-gradient(
+    180deg,
+    #ff80007f,
+    #8c00ff80
+  );
+
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
 footer {
     background-color: #555151;
     color: #fff;
@@ -62,3 +89,4 @@ footer {
     font-size: 14px;
     flex-shrink: 0; 
 }
+

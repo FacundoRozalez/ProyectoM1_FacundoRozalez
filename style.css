@@ -1,16 +1,18 @@
-/* RESET Y GLOBAL */
-*{
+/* ================================
+   RESET Y ESTILOS GLOBALES
+================================ */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body { 
-    height: 100%; 
+html, body {
+    height: 100%;
 }
 
-html { 
-    font-size: 100%; 
+html {
+    font-size: 100%;
 }
 
 body {
@@ -18,148 +20,322 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* HEADER */
+/* ================================
+   HEADER
+================================ */
 header {
-    background: linear-gradient(to right, #ff00007f, #ff80007f, #ffff0084, #00ff0085, #0000ff76, #4c008279, #8c00ff80);
-    color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
+    height: 10rem;
     text-align: center;
-    flex-shrink: 0; 
+    flex-shrink: 0;
+    background: linear-gradient(
+        to right,
+        #ff00007f, #ff80007f, #ffff0084,
+        #00ff0085, #0000ff76, #4c008279, #8c00ff80
+    );
+    color: #000;
 }
 
-h1 { 
-    font-size: 3rem; 
+h1 {
+    font-size: 3rem;
 }
 
+/* ================================
+   MAIN Y CONTENIDO
+================================ */
 main {
-    background-color: #e0e0e0d0;
+    background-color: #f5f5f5d7;
     display: flex;
     justify-content: center;
-    align-items:start;
+    align-items: start;
     text-align: center;
-    flex: 1; 
-    padding-bottom: 1.5rem;
+    flex: 1;
+    padding-bottom: 1rem;
 }
 
-h2 { 
-    font-size: 2rem; margin-top: 3rem;
+h2 {
+    font-size: 2rem;
+    margin-top: 3rem;
 }
 
 #texto {
     margin: 2rem 10rem;
     font-size: 1.3rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     line-height: 2.5rem;
 }
-
-#generar-paleta{ 
-    margin-top: 2rem; 
+/* ===================================
+   CONTENEDOR DE SELECT + BTN GENERAR
+====================================== */
+#generar-paleta {
+    display: flex;
+    gap: 1rem;           /* separación entre elementos */
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
 }
 
-
-
-select{
-    font-size: 1.3rem;
-    font-weight: 800;
-    text-align: center;
-    padding: 1rem 1rem;
+/* ================================
+   SELECTS
+================================ */
+select {
+    font-size: 1rem;            /* ligeramente más pequeño que el botón */
+    font-weight: 600;
+    padding: 0.6rem 0.8rem;     /* compacto */
     color: #000;
-    background: linear-gradient(180deg,#ff80007f,#8c00ff80);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    background: #f0f0f0;        /* neutro, no compite con el botón */
+    border: 1px solid #ccc;     
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+select:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+/* ================================
+   BOTONES GENERALES
+================================ */
+button {
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+/* -------------------------------
+   BOTÓN GENERAR PALETA
+-------------------------------- */
+#btn-generar {
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 0.8rem 1.5rem;
+    color: #fff;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+#btn-generar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    background: linear-gradient(135deg, #00e0ff, #005ce6);
+}
+
+
+/* -------------------------------
+   BOTÓN GUARDAR PALETA
+-------------------------------- */
+#btn-guardar {
+    display: none; /* oculto al inicio */
+    background: linear-gradient(135deg, #00ad68, #00ccff);
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    margin-top: 20px;
+}
+
+#btn-guardar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* -------------------------------
+   BOTÓN ELIMINAR
+-------------------------------- */
+.btn-eliminar {
+    background: linear-gradient(135deg, #ff4d4d, #ff0000);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-eliminar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* -------------------------------
+   BOTÓN BLOQUEO
+-------------------------------- */
+.btn-lock {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.btn-lock:hover {
+    background: rgba(0,0,0,0.85);
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+}
+
+/* ================================
+   PALETAS Y BLOQUES DE COLOR
+================================ */
 #contenedor-paletas {
-    display: none; /* todo oculto al inicio */
+    display: none; /* oculto al inicio */
     margin: 2rem auto;
     width: 90vw;
+    display: flex;
+    gap: 1rem;
 }
 
-/* BLOQUES DE COLOR */
+.contenedor-color {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
 .bloque-color {
-  flex: 1;
-  min-width: 0; /* evita overflow por padding/margen */
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* los códigos abajo */
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  position: relative;
-  padding-bottom: 10px; /* espacio para los códigos */
+    width: 100%;
+    height: 250px;
+    position: relative;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    z-index: 1;
 }
 
+.bloque-color:hover {
+    transform: scale(1.04);
+    z-index: 10;
+}
 
-
+/* Códigos HSL/HEX dentro de cada bloque */
 .codigos-color {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.bloque-color:hover { 
-    transform: scale(1.04); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
 }
 
 .codigo-hex, .codigo-hsl {
-  background: rgba(255,255,255,0.8);
-  padding: 4px 8px;
-  margin: 2px 0;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.btn-lock { 
-    position: absolute; top: 10px; right: 10px; 
+    background: rgba(187, 182, 182, 0.91);
+    padding: 4px 4px;
+    margin: 2px 0;
+    font-weight: bold;
+    border-radius: 4px;
 }
 
+.codigo-hex.seleccionado, .codigo-hsl.seleccionado {
+    background-color: #fffa8d; 
+    color: #000;
+    border: 2px solid #ffaa00;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 4px 2px;
+
+}
+.codigo-hex.no-seleccionado, .codigo-hsl.no-seleccionado {
+    opacity: 0.5;      /* se ve más tenue */
+    font-weight: normal;
+}
+
+
+/* ================================
+   PALETAS GUARDADAS
+================================ */
+#titulo-guardadas{
+    display: none;
+    margin-bottom: 2rem;
+}
+
+
+.paleta-guardada-completa {
+    margin-bottom: 30px;
+}
+
+.fila-guardada {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.bloque-guardado {
+    height: 120px;
+    font-size: 0.8rem;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bloque-guardado .codigo-hex,
+.bloque-guardado .codigo-hsl {
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    color: #000000;
+}
+
+.mini-color {
+    width: 30px;
+    height: 30px;
+}
+
+/* ================================
+   MICROFEEDBACK (TOAST)
+================================ */
 #toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: black;
-  color: white;
-  padding: 10px 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 100;
 }
 
-#toast.mostrar { 
-    opacity: 1; 
+#toast.mostrar {
+    opacity: 1;
 }
 
-@keyframes fadeIn { 
-    from { 
-        opacity: 0; transform: translateY(10px); 
-    } 
-    to { 
-        opacity: 1; transform: translateY(0); 
-    } 
+/* ================================
+   ANIMACIONES
+================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.fila-guardada { 
-    display: flex; margin-bottom: 10px; 
-}
-
-.mini-color{ 
-    width: 30px; height: 30px; 
-}
-
-
-
-
-/* FOOTER */
+/* ================================
+   FOOTER
+================================ */
 footer {
     background-color: #555151;
     color: #fff;
     text-align: center;
     padding: 20px 0;
     font-size: 14px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }

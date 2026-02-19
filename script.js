@@ -10,7 +10,7 @@ const contenedorGuardadas = document.getElementById("paletas-guardadas");
 const toast = document.getElementById("toast");
 
 let paletaActual = [];
-const MAX_PALETAS = 5;
+const MAX_PALETAS = 3;
 
 /* ================================
    EVENTOS PRINCIPALES
@@ -50,6 +50,9 @@ function generarPaleta() {
      // MOSTRAR TODO EL CONTENEDOR DE PALETAS
     const contenedorPaletas = document.getElementById("contenedor-paletas");
     contenedorPaletas.style.display = "block";
+    btnGuardar.style.display = "inline-block";
+    // Solo ahora mostramos las paletas guardadas
+    mostrarPaletasGuardadas(); 
 }
 
 function generarPaletaAleatoria(n) {
@@ -64,14 +67,23 @@ function generarPaletaAleatoria(n) {
         const s = Math.floor(Math.random() * 100);
         const l = Math.floor(Math.random() * 100);
 
-        const hsl = `hsl(${h}, ${s}%, ${l}%)`;
-        const hex = hslAHex(h, s, l);
+        const hslValue = `hsl(${h}, ${s}%, ${l}%)`; // para CSS
+        const hexValue = hslAHex(h, s, l);          // para CSS
 
-        paleta.push({ hsl, hex, bloqueado: false });
+        const hslText = `HSL(${h}, ${s}%, ${l}%)`; // solo para mostrar/copy
+        const hexText = `HEX(${hexValue})`;         // solo para mostrar/copy
+
+        paleta.push({
+            hsl: hslValue,   // para el bloque de color
+            hex: hexValue,   // para el bloque de color
+            hslText: hslText, // para mostrar y copiar
+            hexText: hexText, // para mostrar y copiar
+            bloqueado: false
+        });
     }
     return paleta;
+    
 }
-
 /* ================================
    RENDERIZADO DINÁMICO
 ================================ */
@@ -82,43 +94,65 @@ function mostrarPaleta(paleta) {
 }
 
 function crearBloqueColor(color, index) {
-    const bloque = document.createElement("div");
+
+    // CONTENEDOR GENERAL
+    var contenedorColor = document.createElement("div");
+    contenedorColor.className = "contenedor-color";
+
+    // BLOQUE SOLO COLOR
+    var bloque = document.createElement("div");
     bloque.className = "bloque-color";
     bloque.style.backgroundColor = color.hsl;
     bloque.style.animation = "fadeIn 0.4s ease";
-    bloque.style.position = "relative";
 
-    // BOTÓN DE BLOQUEO CON TEXTO
-    const btnLock = document.createElement("button");
+    // BOTÓN BLOQUEO
+    var btnLock = document.createElement("button");
     btnLock.className = "btn-lock";
-    btnLock.innerHTML = color.bloqueado ? "🔒 Desbloqueado" : "🔓 Bloquear";
-    btnLock.addEventListener("click", (e) => {
+    btnLock.innerHTML = color.bloqueado ? "🔒 Desbloquear" : "🔓 Bloquear";
+
+    btnLock.addEventListener("click", function(e) {
         e.stopPropagation();
         paletaActual[index].bloqueado = !paletaActual[index].bloqueado;
-        btnLock.innerHTML = paletaActual[index].bloqueado ? "🔒 Desbloquear" : "🔓Bloquear";
+
+        if (paletaActual[index].bloqueado) {
+            btnLock.innerHTML = "🔒 Desbloquear";
+        } else {
+            btnLock.innerHTML = "🔓 Bloquear";
+        }
     });
 
-    // COPIAR AL PORTAPAPELES
-    bloque.addEventListener("click", () => copiarAlPortapapeles(color.hex));
+    bloque.appendChild(btnLock);
 
-    // CONTENEDOR DE CÓDIGOS DE COLOR
-    const contCodigos = document.createElement("div");
+    // COPIAR AL PORTAPAPELES
+    bloque.addEventListener("click", function() {
+    const formato = selectFormato.value;
+    if (formato === "hex") {
+        copiarAlPortapapeles(color.hexText);
+    } else {
+        copiarAlPortapapeles(color.hslText);
+    }
+});
+
+
+    // CÓDIGOS DEBAJO
+    let contCodigos = document.createElement("div");
     contCodigos.className = "codigos-color";
 
-    const etiquetaHex = document.createElement("span");
+    const etiquetaHex = document.createElement("div");
     etiquetaHex.className = "codigo-hex";
-    etiquetaHex.textContent = color.hex;
+    etiquetaHex.textContent = color.hexText; // muestra HEX("…")
 
-    const etiquetaHSL = document.createElement("span");
+    const etiquetaHSL = document.createElement("div");
     etiquetaHSL.className = "codigo-hsl";
-    etiquetaHSL.textContent = color.hsl;
+    etiquetaHSL.textContent = color.hslText; // muestra HSL("…")
 
     contCodigos.appendChild(etiquetaHex);
     contCodigos.appendChild(etiquetaHSL);
 
-    bloque.appendChild(btnLock);
-    bloque.appendChild(contCodigos);
-    contenedor.appendChild(bloque);
+    contenedorColor.appendChild(bloque);
+    contenedorColor.appendChild(contCodigos);
+
+    contenedor.appendChild(contenedorColor);
 
     actualizarFormatoBloque(index);
 }
@@ -127,13 +161,26 @@ function crearBloqueColor(color, index) {
 function actualizarFormatoBloque(index) {
     const bloque = contenedor.children[index];
     if (!bloque) return;
+
     const formato = selectFormato.value;
     const etiquetaHex = bloque.querySelector(".codigo-hex");
     const etiquetaHSL = bloque.querySelector(".codigo-hsl");
 
-    etiquetaHex.style.fontWeight = formato === "hex" ? "bold" : "normal";
-    etiquetaHSL.style.fontWeight = formato === "hsl" ? "bold" : "normal";
+    if (formato === "hex") {
+        etiquetaHex.classList.add("seleccionado");
+        etiquetaHex.classList.remove("no-seleccionado");
+
+        etiquetaHSL.classList.add("no-seleccionado");
+        etiquetaHSL.classList.remove("seleccionado");
+    } else {
+        etiquetaHSL.classList.add("seleccionado");
+        etiquetaHSL.classList.remove("no-seleccionado");
+
+        etiquetaHex.classList.add("no-seleccionado");
+        etiquetaHex.classList.remove("seleccionado");
+    }
 }
+
 
 /* ================================
    COPIAR AL PORTAPAPELES
@@ -165,28 +212,63 @@ function guardarPaleta() {
    MOSTRAR PALETAS GUARDADAS
 ================================ */
 function mostrarPaletasGuardadas() {
+
     const guardadas = JSON.parse(localStorage.getItem("paletas")) || [];
     contenedorGuardadas.innerHTML = "";
 
-    guardadas.forEach((paleta, i) => {
+     // Mostramos o escondemos el título según haya paletas
+    const tituloGuardadas = document.getElementById("titulo-guardadas");
+    if (guardadas.length > 0) {
+        tituloGuardadas.style.display = "block";
+    } else {
+        tituloGuardadas.style.display = "none";
+        return; // No hay paletas, no seguimos renderizando
+    }
+
+    guardadas.forEach(function(paleta, i) {
+
+        const contenedorPaleta = document.createElement("div");
+        contenedorPaleta.className = "paleta-guardada-completa";
+
+        const btnEliminar = document.createElement("button");
+        btnEliminar.textContent = "🗑️ Eliminar";
+        btnEliminar.className = "btn-eliminar";
+
+        btnEliminar.addEventListener("click", function() {
+            eliminarPaleta(i);
+        });
+
+        
         const fila = document.createElement("div");
         fila.className = "fila-guardada";
 
-        const btnEliminar = document.createElement("button");
-        btnEliminar.textContent = "🗑️";
-        btnEliminar.className = "btn-eliminar";
-        btnEliminar.addEventListener("click", () => eliminarPaleta(i));
+        paleta.forEach(function(color) {
 
-        fila.appendChild(btnEliminar);
+            const bloque = document.createElement("div");
+            bloque.className = "bloque-color bloque-guardado";
+            bloque.style.backgroundColor = color.hsl;
 
-        paleta.forEach(color => {
-            const mini = document.createElement("div");
-            mini.className = "mini-color";
-            mini.style.backgroundColor = color.hsl;
-            fila.appendChild(mini);
+            const contCodigos = document.createElement("div");
+            contCodigos.className = "codigos-color";
+            
+            const etiquetaHex = document.createElement("div");
+            etiquetaHex.className = "codigo-hex";
+            etiquetaHex.textContent = color.hexText;
+
+            const etiquetaHSL = document.createElement("div");
+            etiquetaHSL.className = "codigo-hsl";
+            etiquetaHSL.textContent = color.hslText;
+            
+            contCodigos.appendChild(etiquetaHex);
+            contCodigos.appendChild(etiquetaHSL);
+
+            bloque.appendChild(contCodigos);
+            fila.appendChild(bloque);
         });
-
-        contenedorGuardadas.appendChild(fila);
+        
+        contenedorPaleta.appendChild(fila);
+        contenedorPaleta.appendChild(btnEliminar);
+        contenedorGuardadas.appendChild(contenedorPaleta);
     });
 }
 
@@ -207,8 +289,12 @@ function eliminarPaleta(index) {
 function mostrarToast(mensaje) {
     toast.textContent = mensaje;
     toast.classList.add("mostrar");
-    setTimeout(() => toast.classList.remove("mostrar"), 2500);
+
+    setTimeout(function() {
+        toast.classList.remove("mostrar");
+    }, 2500);
 }
+
 
 /* ================================
    CONVERSIÓN HSL → HEX
@@ -235,7 +321,3 @@ function hslAHex(h, s, l) {
         .toString(16).slice(1).toUpperCase();
 }
 
-/* ================================
-   INICIALIZACIÓN
-================================ */
-mostrarPaletasGuardadas();

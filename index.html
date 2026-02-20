@@ -16,34 +16,42 @@
     <main>
         <section>
             <h2>Genera tus Paletas de Colores</h2>
-            <p id="texto">La paleta de colores se utiliza para organizar y combinar tonos de manera armónica, garantizando coherencia visual, contraste y legibilidad. Su uso facilita la comunicación visual y la identidad del diseño, y puede ser aplicada por diseñadores, desarrolladores, artistas y cualquier persona que busque crear interfaces, piezas gráficas o proyectos visuales equilibrados y funcionales.</p>
+            <p id="texto">
+                La paleta de colores se utiliza para organizar y combinar tonos de manera armónica, 
+                garantizando coherencia visual, contraste y legibilidad. Su uso facilita la comunicación 
+                visual y la identidad del diseño, y puede ser aplicada por diseñadores, desarrolladores, 
+                artistas y cualquier persona que busque crear interfaces, piezas gráficas o proyectos 
+                visuales equilibrados y funcionales.
+            </p>
             
-            <div id="generar-paleta">
-                <select id="cantidad-paleta">
-                    <option value="" selected disabled>Cantidad</option>
-                    <option value="6">6 Colores</option>
-                    <option value="8">8 Colores</option>
-                    <option value="9">9 Colores</option>
-                </select>
-                
-                <select id="formato-color">
-                    <option value="" selected disabled>Formato</option>
-                    <option value="hsl">HSL</option>
-                    <option value="hex">HEX</option>
-                </select>
+            <form id="generar-paleta">
+                <div class="campo">
+                    <label for="cantidad-paleta">Cantidad de colores</label>
+                    <select id="cantidad-paleta" name="cantidad-paleta">
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
 
-                <button id="btn-generar">Generar paleta</button>
-            </div>
+                <div class="campo">
+                    <label for="formato-color">Formato de color</label>
+                    <select id="formato-color" name="formato-color">
+                        <option value="hsl">HSL</option>
+                        <option value="hex">HEX</option>
+                    </select>
+                </div>
+
+                <button type="button" id="btn-generar">Generar paleta</button>
+            </form>
             
             <div id="contenedor-paletas">
 
                 <section>
-                    <div id="paleta-generada" aria-live="polite">
-                    </div>
+                    <div id="paleta-generada" ></div>
                 </section>
 
-                <button id="btn-guardar">Guardar paleta    
-                </button>
+                <button id="btn-guardar">Guardar paleta</button>
 
                 <section>
                     <h2 id="titulo-guardadas">Paletas guardadas</h2>
@@ -51,7 +59,7 @@
                 </section>
             </div>
 
-            <div id="toast" role="status" aria-live="assertive"></div>           
+            <div id="toast"></div>           
         </section>
     </main>
     <footer>

@@ -30,28 +30,14 @@ function generarPaleta() {
     const cantidad = Number(selectCantidad.value);
     const formato = selectFormato.value;
 
-    if (!cantidad && !formato) {
-        mostrarToast("Seleccioná una cantidad y un formato primero");
-        return;
-    }
-    if (!cantidad) {
-        mostrarToast("Seleccioná una cantidad primero");
-        return;
-    }
-    if (!formato) {
-        mostrarToast("Seleccioná un formato primero");
-        return;
-    }
-
     paletaActual = generarPaletaAleatoria(cantidad);
     mostrarPaleta(paletaActual);
     mostrarToast("Paleta generada correctamente 🎨");
 
-     // MOSTRAR TODO EL CONTENEDOR DE PALETAS
     const contenedorPaletas = document.getElementById("contenedor-paletas");
     contenedorPaletas.style.display = "block";
     btnGuardar.style.display = "inline-block";
-    // Solo ahora mostramos las paletas guardadas
+
     mostrarPaletasGuardadas(); 
 }
 
@@ -67,17 +53,17 @@ function generarPaletaAleatoria(n) {
         const s = Math.floor(Math.random() * 100);
         const l = Math.floor(Math.random() * 100);
 
-        const hslValue = `hsl(${h}, ${s}%, ${l}%)`; // para CSS
-        const hexValue = hslAHex(h, s, l);          // para CSS
+        const hslValue = `hsl(${h}, ${s}%, ${l}%)`; 
+        const hexValue = hslAHex(h, s, l);          
 
-        const hslText = `HSL(${h}, ${s}%, ${l}%)`; // solo para mostrar/copy
-        const hexText = `HEX(${hexValue})`;         // solo para mostrar/copy
+        const hslText = `HSL(${h}, ${s}%, ${l}%)`; 
+        const hexText = `HEX(${hexValue})`;        
 
         paleta.push({
-            hsl: hslValue,   // para el bloque de color
-            hex: hexValue,   // para el bloque de color
-            hslText: hslText, // para mostrar y copiar
-            hexText: hexText, // para mostrar y copiar
+            hsl: hslValue,   
+            hex: hexValue,   
+            hslText: hslText, 
+            hexText: hexText, 
             bloqueado: false
         });
     }
@@ -96,17 +82,17 @@ function mostrarPaleta(paleta) {
 function crearBloqueColor(color, index) {
 
     // CONTENEDOR GENERAL
-    var contenedorColor = document.createElement("div");
+    const contenedorColor = document.createElement("div");
     contenedorColor.className = "contenedor-color";
 
     // BLOQUE SOLO COLOR
-    var bloque = document.createElement("div");
+    const bloque = document.createElement("div");
     bloque.className = "bloque-color";
     bloque.style.backgroundColor = color.hsl;
     bloque.style.animation = "fadeIn 0.4s ease";
 
     // BOTÓN BLOQUEO
-    var btnLock = document.createElement("button");
+    const btnLock = document.createElement("button");
     btnLock.className = "btn-lock";
     btnLock.innerHTML = color.bloqueado ? "🔒 Desbloquear" : "🔓 Bloquear";
 
@@ -125,12 +111,7 @@ function crearBloqueColor(color, index) {
 
     // COPIAR AL PORTAPAPELES
     bloque.addEventListener("click", function() {
-    const formato = selectFormato.value;
-    if (formato === "hex") {
-        copiarAlPortapapeles(color.hexText);
-    } else {
-        copiarAlPortapapeles(color.hslText);
-    }
+    copiarAlPortapapeles(color.hex);
 });
 
 
@@ -140,11 +121,11 @@ function crearBloqueColor(color, index) {
 
     const etiquetaHex = document.createElement("div");
     etiquetaHex.className = "codigo-hex";
-    etiquetaHex.textContent = color.hexText; // muestra HEX("…")
+    etiquetaHex.textContent = color.hexText; 
 
     const etiquetaHSL = document.createElement("div");
     etiquetaHSL.className = "codigo-hsl";
-    etiquetaHSL.textContent = color.hslText; // muestra HSL("…")
+    etiquetaHSL.textContent = color.hslText; 
 
     contCodigos.appendChild(etiquetaHex);
     contCodigos.appendChild(etiquetaHSL);
@@ -216,13 +197,13 @@ function mostrarPaletasGuardadas() {
     const guardadas = JSON.parse(localStorage.getItem("paletas")) || [];
     contenedorGuardadas.innerHTML = "";
 
-     // Mostramos o escondemos el título según haya paletas
+     
     const tituloGuardadas = document.getElementById("titulo-guardadas");
     if (guardadas.length > 0) {
         tituloGuardadas.style.display = "block";
     } else {
         tituloGuardadas.style.display = "none";
-        return; // No hay paletas, no seguimos renderizando
+        return; 
     }
 
     guardadas.forEach(function(paleta, i) {

@@ -162,7 +162,6 @@ function actualizarFormatoBloque(index) {
     }
 }
 
-
 /* ================================
    COPIAR AL PORTAPAPELES
 ================================ */

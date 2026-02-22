@@ -224,13 +224,16 @@ function mostrarPaletasGuardadas() {
 
         paleta.forEach(function(color) {
 
-            const bloque = document.createElement("div");
-            bloque.className = "bloque-color bloque-guardado";
-            bloque.style.backgroundColor = color.hsl;
+            const contenedorBloque = document.createElement("div");
+            contenedorBloque.className = "bloque-guardado";
+
+            const bloqueColor = document.createElement("div");
+            bloqueColor.className = "mini-color";
+            bloqueColor.style.backgroundColor = color.hsl;
 
             const contCodigos = document.createElement("div");
             contCodigos.className = "codigos-color";
-            
+
             const etiquetaHex = document.createElement("div");
             etiquetaHex.className = "codigo-hex";
             etiquetaHex.textContent = color.hexText;
@@ -238,12 +241,14 @@ function mostrarPaletasGuardadas() {
             const etiquetaHSL = document.createElement("div");
             etiquetaHSL.className = "codigo-hsl";
             etiquetaHSL.textContent = color.hslText;
-            
+
             contCodigos.appendChild(etiquetaHex);
             contCodigos.appendChild(etiquetaHSL);
 
-            bloque.appendChild(contCodigos);
-            fila.appendChild(bloque);
+            contenedorBloque.appendChild(bloqueColor);
+            contenedorBloque.appendChild(contCodigos);
+
+            fila.appendChild(contenedorBloque);
         });
         
         contenedorPaleta.appendChild(fila);

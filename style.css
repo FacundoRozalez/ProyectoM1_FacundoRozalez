@@ -271,7 +271,9 @@ button {
    ======================================= */
 #titulo-guardadas{
     display: none;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+
 }
 
 
@@ -285,13 +287,12 @@ button {
 }
 
 .bloque-guardado {
-    height: 120px;
     font-size: 0.8rem;
-    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
 }
 
 .bloque-guardado .codigo-hex,
@@ -299,11 +300,15 @@ button {
     padding: 2px 6px;
     font-size: 0.75rem;
     color: #000000;
+    background-color: #d4d4d4;
+
 }
 
 .mini-color {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 120px;
+    flex-shrink: 0;
+    display: block;
 }
 
 .bloque-guardado .codigos-color {
@@ -436,9 +441,9 @@ footer {
         flex-direction: column;
     }
 
-    .bloque-guardado {
-        height: 80px;
-    }
+   .bloque-guardado {
+    width: 100%;
+}
 
     /* TOAST */
     #toast {

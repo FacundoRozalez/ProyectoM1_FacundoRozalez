@@ -358,3 +358,91 @@ footer {
     font-size: 14px;
     flex-shrink: 0;
 }
+
+
+/* ================================
+   RESPONSIVE MOBILE
+================================ */
+@media (max-width: 970px) {
+
+    header {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    #texto {
+        margin: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.8rem;
+    }
+
+    /* FORM */
+    #generar-paleta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    select {
+        width: 100%;
+        text-align: center;
+    }
+
+    #btn-generar {
+        width: 100%;
+    }
+
+    /* CONTENEDOR PALETAS */
+    #contenedor-paletas {
+        flex-direction: column;
+        width: 95vw;
+        gap: 2rem;
+    }
+
+    /* PALETA GENERADA */
+    #paleta-generada {
+        flex-direction: column;
+    }
+
+    .contenedor-color {
+        width: 100%;
+    }
+
+    .bloque-color {
+        height: 150px;
+    }
+
+    .codigos-color {
+        font-size: 0.7rem;
+    }
+
+    /* BOTÓN GUARDAR */
+    #btn-guardar {
+        width: 100%;
+    }
+
+    /* PALETAS GUARDADAS */
+    .fila-guardada {
+        flex-direction: column;
+    }
+
+    .bloque-guardado {
+        height: 80px;
+    }
+
+    /* TOAST */
+    #toast {
+        right: 15px;
+        left: 15px;
+        bottom: 20px;
+        text-align: center;
+    }
+}

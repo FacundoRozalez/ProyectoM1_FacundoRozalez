@@ -1,6 +1,6 @@
-/* ================================
-   RESET Y ESTILOS GLOBALES
-================================ */
+/* =======================================
+    RESET Y ESTILOS GLOBALES
+   ======================================= */
 * {
     margin: 0;
     padding: 0;
@@ -22,9 +22,9 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* ================================
-   HEADER
-================================ */
+/* =======================================
+    HEADER
+   ======================================= */
 header {
     display: flex;
     justify-content: center;
@@ -41,12 +41,12 @@ header {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size:4rem;
 }
 
-/* ================================
-   MAIN Y CONTENIDO
-================================ */
+/* =======================================
+    MAIN Y CONTENIDO
+   ======================================= */
 main {
     background-color: #efefefd7;
     display: flex;
@@ -62,14 +62,20 @@ h2 {
     margin-top: 3rem;
 }
 
+h3{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
 #texto {
     margin: 2rem 10rem;
     font-size: 1.3rem;
     line-height: 2.5rem;
 }
-/* ===================================
-   CONTENEDOR DE SELECT + BTN GENERAR
-====================================== */
+
+/* =======================================
+    CONTENEDOR DE SELECT + BTN GENERAR
+   ======================================= */
 #generar-paleta {
     display: flex;
     gap: 1rem;           
@@ -78,9 +84,9 @@ h2 {
     margin-top: 2rem;
 }
 
-/* ================================
-   SELECTS
-================================ */
+/* =======================================
+    SELECTS
+   ================================ */
 select {
     font-size: 1rem;            
     font-weight: 600;
@@ -99,10 +105,9 @@ select:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-
-/* ================================
-   BOTONES GENERALES
-================================ */
+/* =======================================
+    BOTONES GENERALES
+   ======================================= */
 button {
     font-size: 1.1rem;
     font-weight: 700;
@@ -113,9 +118,9 @@ button {
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
-/* -------------------------------
-   BOTÓN GENERAR PALETA
--------------------------------- */
+/* =======================================
+    BOTÓN GENERAR PALETA
+   ======================================= */
 #btn-generar {
     font-size: 1.2rem;
     font-weight: 800;
@@ -133,10 +138,9 @@ button {
     background: linear-gradient(135deg, #00e0ff, #005ce6);
 }
 
-
-/* -------------------------------
-   BOTÓN GUARDAR PALETA
--------------------------------- */
+/* =======================================
+    BOTÓN GUARDAR PALETA
+   ======================================= */
 #btn-guardar {
     display: none; /* oculto al inicio */
     background: linear-gradient(135deg, #00ad68, #00ccff);
@@ -150,9 +154,9 @@ button {
     box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
 
-/* -------------------------------
-   BOTÓN ELIMINAR
--------------------------------- */
+/* =======================================
+    BOTÓN ELIMINAR
+   ======================================= */
 .btn-eliminar {
     background: linear-gradient(135deg, #ff4d4d, #ff0000);
     color: #fff;
@@ -166,9 +170,9 @@ button {
     box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
-/* -------------------------------
-   BOTÓN BLOQUEO
--------------------------------- */
+/* =======================================
+    BOTÓN BLOQUEO
+   ======================================= */
 .btn-lock {
     position: absolute;
     top: 10px;
@@ -191,9 +195,9 @@ button {
     box-shadow: 0 5px 12px rgba(0,0,0,0.4);
 }
 
-/* ================================
-   PALETAS Y BLOQUES DE COLOR
-================================ */
+/* =======================================
+    PALETAS Y BLOQUES DE COLOR
+   ======================================= */
 #contenedor-paletas {
     margin: 2rem auto;
     width: 90vw;
@@ -225,8 +229,9 @@ button {
     z-index: 1;
 }
 
-
-/* Códigos HSL/HEX dentro de cada bloque */
+/* =======================================
+    Códigos HSL/HEX dentro de cada bloque
+   ======================================= */
 .codigos-color {
     display: flex;
     flex-direction: column;
@@ -261,10 +266,9 @@ button {
 
 }
 
-
-/* ================================
-   PALETAS GUARDADAS
-================================ */
+/* =======================================
+    PALETAS GUARDADAS
+   ======================================= */
 #titulo-guardadas{
     display: none;
     margin-bottom: 2rem;
@@ -305,9 +309,10 @@ button {
 .bloque-guardado .codigos-color {
     background-color: transparent;
 }
-/* ================================
-   MICROFEEDBACK (TOAST)
-================================ */
+
+/* =======================================
+    MICROFEEDBACK (TOAST)
+   ======================================= */
 #toast {
     position: fixed;
     bottom: 30px;
@@ -321,9 +326,7 @@ button {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     transform: translateY(20px);
     opacity: 0;
-    transition: 
-        opacity 0.3s ease,
-        transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 1000;
     backdrop-filter: blur(6px);
 }
@@ -333,9 +336,9 @@ button {
     transform: translateY(0);
 }
 
-/* ================================
-   ANIMACIONES
-================================ */
+/* =======================================
+    ANIMACIONES
+   ======================================= */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -347,9 +350,9 @@ button {
     }
 }
 
-/* ================================
-   FOOTER
-================================ */
+/* =======================================
+    FOOTER
+   ======================================= */
 footer {
     background-color: #555151;
     color: #fff;
@@ -359,10 +362,9 @@ footer {
     flex-shrink: 0;
 }
 
-
-/* ================================
-   RESPONSIVE MOBILE
-================================ */
+/* =======================================
+    RESPONSIVE MOBILE
+   ======================================= */
 @media (max-width: 970px) {
 
     header {

@@ -14,91 +14,90 @@ La aplicación está orientada a diseñadores, desarrolladores y cualquier usuar
 ## Manual de usuario
 
 ### 🔹 Acceder a la Aplicación
-1. Abrir un navegador web.
-2. En la barra de direcciones, escribir o pegar:
+  1. Abrir un navegador web.
+  2. En la barra de direcciones, escribir o pegar:
 
-    https://facundorozalez.github.io/ProyectoM1_FacundoRozalez/
+      https://facundorozalez.github.io/ProyectoM1_FacundoRozalez/
 
-3. Presionar Enter para cargar la aplicación.
+  3. Presionar Enter para cargar la aplicación.
 
 ### 🔹 Generar una paleta
-1. Seleccionar la **cantidad de colores** deseada.
-  - 6
-  - 8
-  - 9
-
-2. Elegir el **formato de color**:
-  - HEX
-  - HSL
-3. Presionar el botón **"Generar paleta"**.
+  1. Seleccionar la **cantidad de colores** deseada.
+    - 6
+    - 8
+    - 9
+  2. Elegir el **formato de color**:
+    - HEX
+    - HSL
+  3. Presionar el botón **"Generar paleta"**.
 
 ### 🔹 Bloquear un color
-- Presionar el botón 🔒 **Bloquear** dentro de un bloque de color.
-- Los colores bloqueados se mantendrán al generar una nueva paleta.
+  - Presionar el botón 🔒 **Bloquear** dentro de un bloque de color.
+  - Los colores bloqueados se mantendrán al generar una nueva paleta.
 
 ### 🔹 Ampliar una paleta existente
-1. Generar una paleta con la cantidad de colores deseada.
-2. Bloquear todos los colores de la paleta con el boton Bloquear.
-3. Cambiar la cantidad de colores.
-4. Presionar nuevamente el botón "Generar paleta".
-- Los colores bloqueados se mantendrán sin cambios.
-- Se agregarán automáticamente nuevos colores hasta completar la nueva cantidad seleccionada.
+  1. Generar una paleta con la cantidad de colores deseada.
+  2. Bloquear todos los colores de la paleta con el botón Bloquear.
+  3. Cambiar la cantidad de colores.
+  4. Presionar nuevamente el botón "Generar paleta".
+  - Los colores bloqueados se mantendrán sin cambios.
+  - Se agregarán automáticamente nuevos colores hasta completar la nueva cantidad seleccionada.
   
 ### 🔹 Reducir una paleta existente
-1. Generar una paleta con la cantidad de colores deseada.
-2. Bloquear los colores que se desean conservar.
-3. Cambiar la cantidad de colores a un número menor.
-4. Presionar nuevamente el botón "Generar paleta".
-5. Los colores bloqueados se mantendrán sin cambios.
-6. La paleta se reducirá automáticamente eliminando los colores que superen la nueva cantidad seleccionada.
-7. La reducción se realiza conservando el orden visual de los colores de izquierda a derecha.(Se eliminan los colores que estan a la derecha de la paleta).
+  1. Generar una paleta con la cantidad de colores deseada.
+  2. Bloquear los colores que se desean conservar.
+  3. Cambiar la cantidad de colores a un número menor.
+  4. Presionar nuevamente el botón "Generar paleta".
+  5. Los colores bloqueados se mantendrán sin cambios.
+  6. La paleta se reducirá automáticamente eliminando los colores que superen la nueva cantidad seleccionada.
+  7. La reducción se realiza conservando el orden visual de los colores de izquierda a derecha.(Se eliminan los colores que estan a la derecha de la paleta).
 
 ### 🔹 Copiar un color
-- Hacer clic sobre el bloque de color para copiar el código HEX al portapapeles.
+  - Hacer clic sobre el bloque de color para copiar el código HEX al portapapeles.
 
 ### 🔹 Visualizar formato activo
-- Al alternar entre HEX y HSL, el código correspondiente de la paleta generada se resaltará automáticamente indicando el formato seleccionado como activo.
+  - Al alternar entre HEX y HSL, el código correspondiente de la paleta generada se resaltará automáticamente indicando el formato seleccionado como activo.
 
 ### 🔹 Guardar paleta
-- Presionar el botón **Guardar paleta** para almacenar la paleta actual (con sus colores y códigos en formato HEX o HSL).
-- El sistema permite guardar un máximo de **3 paletas**.
-- Las paletas se almacenan en `LocalStorage`.
+  - Presionar el botón **Guardar paleta** para almacenar la paleta actual (con sus colores y códigos en formato HEX o HSL).
+  - El sistema permite guardar un máximo de **3 paletas**.
+  - Las paletas se almacenan en `LocalStorage`.
 
 ### 🔹 Eliminar paleta guardada
-- Dentro de las paletas guardadas, presionar el botón 🗑️ **Eliminar**.
+  - Dentro de las paletas guardadas, presionar el botón 🗑️ **Eliminar**.
 
 ---
 
 ## Decisiones técnicas
 
 ### Arquitectura
-La aplicación está construida con:
+  - La aplicación está construida con:
 
-- HTML para la estructura semántica del contenido.
-- CSS para estilos, animaciones y diseño responsive.
-- JavaScript para la lógica dinámica del sistema y manipulación del DOM.
+    - HTML para la estructura semántica del contenido.
+    - CSS para estilos, animaciones y diseño responsive.
+    - JavaScript para la lógica dinámica del sistema y manipulación del DOM.
 
 ### Generación de colores en dos formatos(HSL/HEX)
-- Se utiliza el modelo **HSL** para la generación aleatoria de colores.
-- Conversión interna de **HSL → HEX** para compatibilidad.
+  - Se utiliza el modelo **HSL** para la generación aleatoria de colores.
+  - Conversión interna de **HSL → HEX** para compatibilidad.
 
 ### Persistencia de datos
-- Se utiliza `LocalStorage` del navegador para:
-  - Guardar paletas.
-  - Recuperar paletas guardadas.
-  - Limitar almacenamiento a 3 paletas.
+  - Se utiliza `LocalStorage` del navegador para:
+    - Guardar paletas.
+    - Recuperar paletas guardadas.
+    - Limitar almacenamiento a 3 paletas.
 
 ### Interacción UI/UX
-- Animaciones suaves mediante CSS.
-- Toasts de microfeedback para mejorar la experiencia del usuario.
-- Diseño responsive para dispositivos móviles.
+  - Animaciones suaves mediante CSS.
+  - Toasts de microfeedback para mejorar la experiencia del usuario.
+  - Diseño responsive para dispositivos móviles.
 
 ---
 
 ## Pasos para ejecutar la aplicación en local
 
 ### Requisitos
-- Navegador web.
+  - Navegador web.
 
 ### Ejecución
 #### Opción 1: Descargar el proyecto
@@ -124,20 +123,20 @@ La aplicación está construida con:
 
 git clone https://github.com/facundorozalez/ProyectoM1_FacundoRozalez
 
-#### Abrir la aplicación(Luego de Descargar o Clonar):
-- Entrar a la carpeta que se creó.
-- Buscar el archivo llamado:
+#### Abrir la aplicación (luego de Descargar o Clonar):
+  - Entrar a la carpeta que se creó.
+  - Buscar el archivo llamado:
 
-   index.html
+     index.html
 
-- Hacer doble clic sobre ese archivo.
-- La aplicación se abrirá automáticamente en tu navegador.
+  - Hacer doble clic sobre ese archivo.
+  - La aplicación se abrirá automáticamente en tu navegador.
 
 ### Nota
-- No es necesario instalar ningún programa adicional.
-- No se necesita servidor.
-- No se requiere configuración.
-- La aplicación funciona directamente al abrir el archivo.
+  - No es necesario instalar ningún programa adicional.
+  - No se necesita servidor.
+  - No se requiere configuración.
+  - La aplicación funciona directamente al abrir el archivo.
 
 ---
 
@@ -152,21 +151,21 @@ git clone https://github.com/facundorozalez/ProyectoM1_FacundoRozalez
   - Presionar Create repository.
 
 🔹 Paso 2: Subir los archivos del proyecto
-  - Opción 1: Subir desde la web (recomendado para principiantes)
+  - Opción 1: Subir desde la web 
     1. Abrir el repositorio creado.
     2. Hacer clic en Add file → Upload files.
     3. Arrastrar la carpeta del proyecto o seleccionar los archivos manualmente.
     4. Presionar Commit changes para confirmar la subida.
 
-  - Opción 2: Subir usando Git (opción avanzada) 
+  - Opción 2: Subir usando Git 
     - Si tenés instalado Git, podés usar la terminal:
 
-      git init
-      git add .
-      git commit -m "Subida del proyecto"
-      git branch -M main
-      git remote add origin URL_DEL_REPOSITORIO
-      git push -u origin main
+      - git init
+      - git add .
+      - git commit -m "Subida del proyecto"
+      - git branch -M main
+      - git remote add origin URL_DEL_REPOSITORIO
+      - git push -u origin main
 
 🔹 Paso 3: Configurar el despliegue
   En la sección Build and deployment:

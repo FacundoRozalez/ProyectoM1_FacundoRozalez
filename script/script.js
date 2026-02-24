@@ -76,7 +76,8 @@ function generarPaletaAleatoria(n) {
 function mostrarPaleta(paleta) {
     contenedor.innerHTML = "";
     contenedor.style.display = "flex";
-    for (let i = 0; i < paleta.length; i++) crearBloqueColor(paleta[i], i);
+    for (let i = 0; i < paleta.length; i++) {
+        crearBloqueColor(paleta[i], i);}
 }
 
 function crearBloqueColor(color, index) {
@@ -87,6 +88,7 @@ function crearBloqueColor(color, index) {
 
     // BLOQUE SOLO COLOR
     const bloque = document.createElement("div");
+
     bloque.className = "bloque-color";
     bloque.style.backgroundColor = color.hsl;
     bloque.style.animation = "fadeIn 0.4s ease";

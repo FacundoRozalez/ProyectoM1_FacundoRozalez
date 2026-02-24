@@ -37,7 +37,7 @@ La aplicación está orientada a diseñadores, desarrolladores y cualquier usuar
 
 ### 🔹 Ampliar una paleta existente
   1. Generar una paleta con la cantidad de colores deseada.
-  2. Bloquear todos los colores de la paleta con el boton Bloquear.
+  2. Bloquear todos los colores de la paleta con el botón Bloquear.
   3. Cambiar la cantidad de colores.
   4. Presionar nuevamente el botón "Generar paleta".
   - Los colores bloqueados se mantendrán sin cambios.
@@ -151,13 +151,13 @@ git clone https://github.com/facundorozalez/ProyectoM1_FacundoRozalez
   - Presionar Create repository.
 
 🔹 Paso 2: Subir los archivos del proyecto
-  - Opción 1: Subir desde la web (recomendado para principiantes)
+  - Opción 1: Subir desde la web 
     1. Abrir el repositorio creado.
     2. Hacer clic en Add file → Upload files.
     3. Arrastrar la carpeta del proyecto o seleccionar los archivos manualmente.
     4. Presionar Commit changes para confirmar la subida.
 
-  - Opción 2: Subir usando Git (opción avanzada) 
+  - Opción 2: Subir usando Git 
     - Si tenés instalado Git, podés usar la terminal:
 
       - git init

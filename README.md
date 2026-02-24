@@ -37,19 +37,27 @@ La aplicación está orientada a diseñadores, desarrolladores y cualquier usuar
 - Los colores bloqueados se mantendrán al generar una nueva paleta.
 
 ### 🔹 Ampliar una paleta existente
-1. Generar una paleta con la cantidad de colores deseada (por ejemplo, 6).
-2. Bloquear los colores que se desean conservar.
-3. Cambiar la cantidad de colores a un número mayor (por ejemplo, 8 o 9).
+1. Generar una paleta con la cantidad de colores deseada.
+2. Bloquear todos los colores de la paleta con el boton Bloquear.
+3. Cambiar la cantidad de colores.
 4. Presionar nuevamente el botón "Generar paleta".
 - Los colores bloqueados se mantendrán sin cambios.
 - Se agregarán automáticamente nuevos colores hasta completar la nueva cantidad seleccionada.
+  
+### 🔹 Reducir una paleta existente
+1. Generar una paleta con la cantidad de colores deseada.
+2. Bloquear los colores que se desean conservar.
+3. Cambiar la cantidad de colores a un número menor.
+4. Presionar nuevamente el botón "Generar paleta".
+5. Los colores bloqueados se mantendrán sin cambios.
+6. La paleta se reducirá automáticamente eliminando los colores que superen la nueva cantidad seleccionada.
+7. La reducción se realiza conservando el orden visual de los colores de izquierda a derecha.(Se eliminan los colores que estan a la derecha de la paleta).
 
 ### 🔹 Copiar un color
 - Hacer clic sobre el bloque de color para copiar el código HEX al portapapeles.
 
 ### 🔹 Visualizar formato activo
 - Al alternar entre HEX y HSL, el código correspondiente de la paleta generada se resaltará automáticamente indicando el formato seleccionado como activo.
-
 
 ### 🔹 Guardar paleta
 - Presionar el botón **Guardar paleta** para almacenar la paleta actual (con sus colores y códigos en formato HEX o HSL).
